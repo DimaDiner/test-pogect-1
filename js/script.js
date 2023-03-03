@@ -1,11 +1,18 @@
-// const data = [5, 10, 'Shopping', 20, 'Homework'];
-// const result = [];
+const lines = 6;
+let result = '';
+let probel = 5;
 
+for (let i = 1; i<10; i++) {
+    if (i%2 == 0){
+         continue;
+    }
+    for (let k = 0; k < probel; k++){
+        result+=' '
+    };
+    for (let j = 0; j < i; j++){
+        result += '*'}
+    result += `\n`;
+    probel --;
+}
 
-// let x = data.length
-// for (let i= 0 ; i < data.length; i++){
-// 	result[i] = data[x];
-// 	x--;
-// }
-
-console.log("sdfsddsfsdsadfsadfgitfsdfsdfsdfsdfsd");
+console.log(result);    
