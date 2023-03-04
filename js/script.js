@@ -15,4 +15,4 @@ for (let i = 1; i<10; i++) {
     probel --;
 }
 
-console.log(result);    
+console.log(result + 'dsf');    
