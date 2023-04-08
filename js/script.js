@@ -1,55 +1,45 @@
-const shoppingMallData = {
-    shops: [
-        {
-            width: 10,
-            length: 5
-        },
-        {
-            width: 15,
-            length: 7
-        },
-        {
-            width: 20,
-            length: 5
-        },
-        {
-            width: 8,
-            length: 10
+const students = ['Peter', 'Andrew', 'Ann', 'Mark', 'Josh', 'Sandra', 'Cris', 'Bernard', 'Takesi', 'Sam'];
+
+function sortStudentsByGroups(arr) {
+
+    const cloneArr = [...arr]
+    
+    const totalArr = []
+
+    cloneArr.sort()
+
+    cloneArr.reverse()
+
+    // Определяем количество комманд
+    let amountTeam = Math.floor(cloneArr.length / 3)
+
+    // Создаём массивы и заполняем их и добавляем в конечный массив
+    for (let i = 0; i < amountTeam; i++) {
+        const interimArr = []
+        for (let k = 0; k < 3; k++){
+            interimArr.push(cloneArr.pop())
         }
-    ],
-    height: 5,
-    moneyPer1m3: 30,
-    budget: 50000
+        totalArr[i] = interimArr 
+    }
+
+    // Добавляем в конечный массив остальных игроков
+    if (cloneArr.length % 3 === 0){
+        totalArr.push(`Оставшиеся студенты: -`)
+    } else {
+        cloneArr.reverse()
+        totalArr.push(`Оставшиеся студенты: ${cloneArr.join(", " )}`)
+    }
+    return totalArr
 }
 
-function isBudgetEnough(data) {
+sortStudentsByGroups(students);
 
 
-       let totalArea = 0;
-       
-    //    Считаем площадь одного магазина и прибавляем в общую площадь
-       data.shops.forEach(function(item, i){
-        let dataShop = [];
-        let areaShop = 0;
-        for (let key in item){
-            dataShop.push(item[key])
-        }
-        areaShop = dataShop[0] * dataShop[1];
-        totalArea += areaShop
-       });
+// arr = [1,2,4,5]
+// arr2 = []
+// arr2.push(arr.pop())
 
-    //    Расчитываем объем торгового центра
-        let totalVolume = totalArea*data.height;
-    
-    //    Определяем хватит ли бюджета
-        if (data.budget >= totalVolume*30){
-            console.log('Бюджета достаточно');
-            return 'Бюджета достаточно'
-        } else {
-            console.log('Бюджета недостаточно');
-            return 'Бюджета недостаточно'
-        }
+// console.log(arr);
+// console.log(arr2)
 
-};
 
-isBudgetEnough(shoppingMallData)
